@@ -1,0 +1,31 @@
+:root {
+  color-scheme: light;
+  --page-bg: #f9faf5;
+  --page-bg-accent: #ff7043;
+  --page-bg-deep: #1b263b;
+  --surface-base: rgba(255, 255, 255, 0.78);
+  --surface-strong: rgba(27, 38, 59, 0.96);
+  --surface-border: rgba(27, 38, 59, 0.08);
+  --surface-shadow: 0 24px 60px rgba(27, 38, 59, 0.12);
+  --text-primary: #111111;
+  --text-secondary: rgba(27, 38, 59, 0.72);
+  --text-inverse: #ffffff;
+  --accent-primary: #ff7043;
+  --accent-primary-hover: #df592e;
+  --accent-secondary: #1b263b;
+  --accent-secondary-hover: #111a2a;
+  --accent-soft: rgba(255, 112, 67, 0.12);
+  --success-bg: rgba(65, 90, 119, 0.14);
+  --success-text: #1b263b;
+  --warning-bg: rgba(255, 112, 67, 0.14);
+  --warning-text: #9c3b1d;
+  --neutral-bg: rgba(224, 225, 221, 0.9);
+  --neutral-text: #2e2f2d;
+  --radius-xl: 20px;
+  --radius-lg: 16px;
+  --radius-md: 14px;
+  --radius-sm: 999px;
+  --transition-base: 180ms ease;
+  --font-display: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Trebuchet MS", sans-serif;
+}

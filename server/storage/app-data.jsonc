@@ -1,0 +1,118 @@
+// questo file mi serve per salvare i dati locali del progetto senza usare ancora un database esterno.
+// lo uso per tenere utenti, task, sessioni, post e notifiche in un solo posto semplice da leggere mentre costruiamo l'app.
+{
+  "meta": {
+    "version": 1,
+    "createdAt": "2026-03-26T00:00:00.000Z",
+    "updatedAt": "2026-03-30T10:20:11.547Z"
+  },
+  "users": [
+    {
+      "id": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+      "createdAt": "2026-03-26T14:54:26.080Z",
+      "updatedAt": "2026-03-26T14:54:26.080Z",
+      "name": "Alessandra Trapasso",
+      "email": "alessandratrapasso.095@gmail.com",
+      "passwordHash": "1eb0b866e1a239aa25bd489006e99c86:ce85e15616e450f9c67085c7fdbc2fa7c3cd20f0f1d7d9afe01a174e5ff0226613b75350ead1599594684fcb4ace0f8ea2b3222ee0e3558740357b5bd3542c04",
+      "role": "member",
+      "profile": {
+        "jobTitle": "",
+        "bio": "",
+        "avatarUrl": ""
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "ab97a5f1-f94e-44ee-80a2-6c2a21ca57a0",
+      "createdAt": "2026-03-26T17:15:01.030Z",
+      "updatedAt": "2026-03-26T17:17:48.870Z",
+      "title": "",
+      "description": "",
+      "ownerId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+      "status": "done",
+      "priority": "high"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "39ce2bbb-974e-4a10-853f-2392db7748d4",
+      "createdAt": "2026-03-30T10:20:11.503Z",
+      "updatedAt": "2026-03-30T10:20:11.547Z",
+      "userId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+      "token": "3e4a882f098304fa8e6e45b05baa766a6060b8dab218841621cf03b8d1b7b3c3f92e6133f6aa0d561c46a52ba2612fc0",
+      "lastUsedAt": "2026-03-30T10:20:11.547Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": "0a7bd768-9635-4f7a-88e2-bfcd9c9b19ba",
+      "createdAt": "2026-03-26T17:15:34.539Z",
+      "updatedAt": "2026-03-26T17:15:42.386Z",
+      "ownerId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+      "authorName": "Alessandra Trapasso",
+      "title": "Sono emozionata per questo progetto",
+      "content": "Ultimo progetto per questo percorso di master",
+      "comments": [
+        {
+          "id": "4cf09a6e-436a-4819-8d2c-2eb7d1ce9709",
+          "createdAt": "2026-03-26T17:15:42.386Z",
+          "updatedAt": "2026-03-26T17:15:42.386Z",
+          "authorId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+          "authorName": "Alessandra Trapasso",
+          "message": "Felice"
+        }
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "dcfc6814-2a6f-4dcf-857a-06ac69c3beeb",
+      "createdAt": "2026-03-26T17:15:01.033Z",
+      "updatedAt": "2026-03-26T17:15:56.447Z",
+      "userId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+      "type": "task",
+      "title": "Nuovo task creato",
+      "message": "Il task \"Progetto per Start2Impact\" e' stato aggiunto alla board.",
+      "link": "#task-board",
+      "isRead": true,
+      "readAt": "2026-03-26T17:15:56.447Z"
+    },
+    {
+      "id": "f25cf20e-7cd8-4e23-802b-787e33dc98c9",
+      "createdAt": "2026-03-26T17:15:34.541Z",
+      "updatedAt": "2026-03-26T17:15:55.572Z",
+      "userId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+      "type": "feed",
+      "title": "Post pubblicato",
+      "message": "Hai pubblicato \"Sono emozionata per questo progetto\" nella bacheca del team.",
+      "link": "#bacheca",
+      "isRead": true,
+      "readAt": "2026-03-26T17:15:55.572Z"
+    },
+    {
+      "id": "2d430f4b-7285-415f-ae99-54a364549595",
+      "createdAt": "2026-03-26T17:15:42.386Z",
+      "updatedAt": "2026-03-26T17:15:54.145Z",
+      "userId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+      "type": "feed",
+      "title": "Commento aggiunto",
+      "message": "Hai commentato il post \"Sono emozionata per questo progetto\".",
+      "link": "#bacheca",
+      "isRead": true,
+      "readAt": "2026-03-26T17:15:54.145Z"
+    },
+    {
+      "id": "6c643230-680e-435a-9f3c-96fb5858c744",
+      "createdAt": "2026-03-26T17:17:48.879Z",
+      "updatedAt": "2026-03-26T17:17:48.879Z",
+      "userId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
+      "type": "task",
+      "title": "Task aggiornato",
+      "message": "Le informazioni del task \"Progetto per Start2Impact\" sono state aggiornate.",
+      "link": "#task-board",
+      "isRead": false,
+      "readAt": null
+    }
+  ]
+}
