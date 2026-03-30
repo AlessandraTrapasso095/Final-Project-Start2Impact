@@ -1,5 +1,4 @@
-// questo file mi serve per concentrare la logica dell'autenticazione in un solo punto.
-// lo uso per validare input, gestire password hashate e creare o invalidare sessioni senza gonfiare i controller.
+// lo uso per validare input, gestire password hashate e creare o invalidare sessioni 
 
 import { randomBytes, scrypt as scryptCallback, timingSafeEqual } from "node:crypto";
 import { promisify } from "node:util";
@@ -64,7 +63,6 @@ const validateRegisterInput = ({ name, email, password }) => {
   const validationErrors = [];
 
   // mi serve per fermare subito richieste con campi vuoti o troppo deboli.
-  // questo aiuta sia noi sia il frontend a dare feedback chiari prima di salvare dati sporchi.
   if (typeof name !== "string" || name.trim().length < 2) {
     validationErrors.push("Il nome deve contenere almeno 2 caratteri.");
   }
@@ -93,7 +91,6 @@ const validateLoginInput = ({ email, password }) => {
   const validationErrors = [];
 
   // mi serve per bloccare richieste login chiaramente incomplete.
-  // cosi' evitiamo query inutili e teniamo il flusso auth piu' ordinato.
   if (typeof email !== "string" || !email.trim()) {
     validationErrors.push("L'email e' obbligatoria.");
   }
@@ -117,7 +114,6 @@ const hashPassword = async (password) => {
   const derivedKey = await scrypt(password, salt, hashKeyLength);
 
   // mi serve per salvare insieme sale e hash in una singola stringa facile da rileggere.
-  // questo formato ci basta per una persistenza locale semplice ma gia' sicura per il progetto.
   return `${salt}:${Buffer.from(derivedKey).toString("hex")}`;
 };
 
@@ -183,7 +179,6 @@ const getActiveSessionContext = async (sessionToken) => {
   };
 };
 
-// mi serve per restituire un piccolo riepilogo del modulo auth.
 // qui adesso mostro anche come passare il token di sessione alle rotte protette.
 export const getAuthModuleInfo = () => ({
   moduleName: "auth",
@@ -192,7 +187,6 @@ export const getAuthModuleInfo = () => ({
   plannedRoutes: plannedAuthRoutes,
 });
 
-// mi serve per registrare un utente nuovo e loggarlo subito nella prima sessione.
 // questo evita un passaggio inutile dopo la registrazione e semplifica molto l'esperienza utente.
 export const registerUser = async ({ name, email, password }) => {
   validateRegisterInput({ name, email, password });
@@ -216,7 +210,6 @@ export const registerUser = async ({ name, email, password }) => {
 };
 
 // mi serve per verificare le credenziali in ingresso e aprire una nuova sessione.
-// questo crea un nuovo token ogni volta che il login va a buon fine.
 export const loginUser = async ({ email, password }) => {
   validateLoginInput({ email, password });
 
@@ -248,7 +241,6 @@ export const loginUser = async ({ email, password }) => {
 };
 
 // mi serve per recuperare l'utente loggato partendo dal token ricevuto nella richiesta.
-// lo uso per la rotta session e piu' avanti anche per proteggere dashboard e task.
 export const getCurrentSession = async (sessionToken) => {
   const activeSessionContext = await getActiveSessionContext(sessionToken);
 
@@ -256,12 +248,10 @@ export const getCurrentSession = async (sessionToken) => {
 };
 
 // mi serve per riusare la stessa verifica auth anche fuori dal controller del modulo auth.
-// lo uso nel middleware delle rotte protette cosi' tasks e moduli futuri non duplicano la logica di sessione.
 export const getAuthenticatedContext = async (sessionToken) =>
   getActiveSessionContext(sessionToken);
 
 // mi serve per invalidare la sessione corrente quando l'utente fa logout.
-// questo cancella il token dal file dati e conferma al client che la sessione non e' piu' attiva.
 export const logoutUser = async (sessionToken) => {
   if (!sessionToken) {
     throw createHttpError(

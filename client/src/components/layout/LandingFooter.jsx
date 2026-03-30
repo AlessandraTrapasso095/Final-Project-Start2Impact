@@ -1,5 +1,4 @@
 // questo file mi serve per chiudere la landing con un footer pulito e coerente.
-// lo uso per dare un'uscita ordinata alla pagina con nome studio e link finali adattati al progetto.
 
 import { useEffect, useMemo, useState } from "react";
 import Button from "../ui/Button.jsx";
@@ -12,8 +11,7 @@ const initialContactFormValues = {
   message: "",
 };
 
-// mi serve per avere un footer semplice, professionale e allineato al tono della landing.
-// questo tiene insieme nome studio, copyright e link utili senza trasformare la chiusura della pagina in un blocco pesante.
+// questo tiene insieme nome studio, copyright e link utili 
 function LandingFooter() {
   const [activeDialogId, setActiveDialogId] = useState("");
   const [contactFormValues, setContactFormValues] = useState(initialContactFormValues);

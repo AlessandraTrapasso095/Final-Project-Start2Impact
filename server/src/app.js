@@ -1,5 +1,4 @@
 // questo file mi serve per comporre l'app Express senza avviare direttamente il server.
-// lo uso per tenere separata la configurazione dell'app dalla partenza vera e propria del processo Node.
 
 import express from "express";
 import { env } from "./config/env.js";

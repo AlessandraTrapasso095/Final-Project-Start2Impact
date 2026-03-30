@@ -1,5 +1,4 @@
-// questo file mi serve per mostrare piccoli stati visivi in modo coerente.
-// lo uso per etichette come online, design system, next step e simili senza duplicare classi o struttura.
+// lo uso per etichette come online, design system, next step e simili
 
 const toneClassMap = {
   success: "status-pill status-pill--success",
@@ -8,7 +7,6 @@ const toneClassMap = {
 };
 
 // mi serve per stampare una pillola compatta ma leggibile.
-// questo prende il tono giusto e lo trasforma in una classe coerente con il resto dell'interfaccia.
 function StatusPill({ children, tone = "neutral" }) {
   const className = toneClassMap[tone] || toneClassMap.neutral;
 

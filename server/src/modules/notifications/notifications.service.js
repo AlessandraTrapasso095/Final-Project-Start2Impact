@@ -1,5 +1,4 @@
 // questo file mi serve per raccogliere la logica del sistema notifiche.
-// lo uso per creare eventi leggibili, filtrare per utente e gestire la lettura senza appesantire controller e altri moduli.
 
 import { createHttpError } from "../../utils/create-http-error.js";
 import {
@@ -25,7 +24,6 @@ const createNotificationSummary = (notifications) => ({
   read: notifications.filter((notification) => notification.isRead).length,
 });
 
-// mi serve per creare una notifica riusabile da qualunque modulo del backend.
 // cosi' task, profilo e bacheca possono inviare eventi senza duplicare validazioni e struttura.
 export const createNotificationForUser = async (userId, notificationInput = {}) => {
   if (!userId) {
@@ -56,7 +54,6 @@ export const createNotificationForUser = async (userId, notificationInput = {}) 
 };
 
 // mi serve per restituire l'elenco ordinato delle notifiche del workspace.
-// lo uso per dare al frontend sia la lista sia un piccolo riepilogo pronto da mostrare.
 export const listNotificationsForUser = async (userId) => {
   const notifications = await getNotificationsByUserId(userId);
   const sortedNotifications = sortNotifications(notifications);
@@ -83,7 +80,6 @@ const getOwnedNotificationOrThrow = async (notificationId, userId) => {
 };
 
 // mi serve per segnare una notifica singola come letta controllando prima la proprieta'.
-// cosi' il frontend non puo' aggiornare notifiche di altri utenti solo cambiando id nella richiesta.
 export const markNotificationAsReadForUser = async (notificationId, userId) => {
   await getOwnedNotificationOrThrow(notificationId, userId);
 
@@ -91,7 +87,6 @@ export const markNotificationAsReadForUser = async (notificationId, userId) => {
 };
 
 // mi serve per segnare come lette tutte le notifiche dell'utente.
-// restituisco anche quante ne ho aggiornate cosi' il frontend puo' dare un feedback utile.
 export const markAllNotificationsAsReadForUser = async (userId) => {
   const updatedCount = await markAllNotificationsAsRead(userId);
 

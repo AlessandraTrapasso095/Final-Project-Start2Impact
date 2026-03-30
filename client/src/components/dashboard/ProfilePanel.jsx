@@ -1,5 +1,5 @@
 // questo file mi serve per mostrare e aggiornare il profilo utente nella dashboard.
-// lo uso per tenere insieme form, caricamento iniziale e salvataggio senza appesantire il contenitore principale.
+// lo uso per tenere insieme form, caricamento iniziale e salvataggio.
 
 import { startTransition, useEffect, useRef, useState } from "react";
 import { getCurrentProfile, updateCurrentProfile } from "../../services/profile-api.js";
@@ -75,7 +75,6 @@ const exportCanvasAsDataUrl = (canvas, quality) =>
   });
 
 // mi serve per ridurre dimensioni e peso dell'immagine prima di salvarla nel profilo.
-// faccio piu' tentativi con dimensioni e qualita' piu' leggere finche' ottengo un risultato accettabile.
 const convertAvatarFileToOptimizedDataUrl = async (file) => {
   const previewUrl = URL.createObjectURL(file);
 

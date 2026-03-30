@@ -1,5 +1,4 @@
 // questo file mi serve per mostrare una card task leggibile e riusabile dentro la board.
-// lo uso per tenere insieme etichette, date e azioni rapide senza appesantire il componente principale della dashboard.
 
 import Button from "../ui/Button.jsx";
 import StatusPill from "../ui/StatusPill.jsx";
@@ -34,8 +33,7 @@ const nextStatusActionMap = {
   done: "Riporta in lista",
 };
 
-// mi serve per stampare ogni task con tutte le azioni veloci che mi servono in dashboard.
-// questo componente riceve il task e delega al parent solo le azioni vere di update e delete.
+// riceve il task e delega al parent solo le azioni vere di update e delete.
 function TaskCard({ task, isPending, onAdvanceStatus, onCyclePriority, onDelete }) {
   return (
     <article className="task-card">

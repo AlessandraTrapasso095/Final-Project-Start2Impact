@@ -1,5 +1,4 @@
 // questo file mi serve per costruire il pannello hero della homepage iniziale.
-// lo uso per presentare progetto, stato attuale e prossimi obiettivi con un look piu' editoriale.
 
 import Button from "../components/ui/Button.jsx";
 import StatusPill from "../components/ui/StatusPill.jsx";
@@ -7,8 +6,7 @@ import SurfaceCard from "../components/ui/SurfaceCard.jsx";
 import { appConfig } from "../config/app-config.js";
 import { workflowHighlights } from "../data/dashboard-highlights.js";
 
-// mi serve per dare alla pagina una parte introduttiva forte e chiara.
-// questo mette insieme messaggio, bottoni e card di contesto senza mischiare tutto dentro App.jsx.
+// mi serve per dare alla pagina una parte introduttiva 
 function HeroPanel() {
   return (
     <div className="hero-panel">

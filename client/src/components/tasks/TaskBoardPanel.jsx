@@ -1,5 +1,4 @@
-// questo file mi serve per gestire la dashboard task board dopo il login.
-// lo uso per caricare la board, creare task, aggiornare card e cancellarle restando tutto nello stesso flusso frontend.
+// lo uso per caricare la board, creare task, aggiornare card e cancellarle 
 
 import { startTransition, useEffect, useState } from "react";
 import AuthenticatedPanel from "../auth/AuthenticatedPanel.jsx";
@@ -82,8 +81,7 @@ const createBoardFeedback = (message, tone = "neutral", details = []) => ({
   details,
 });
 
-// mi serve per mostrare un saluto coerente con il profilo dell'utente.
-// prima controllo il genere salvato, poi faccio un fallback leggero sul nome se il campo non e' stato ancora impostato.
+// prima controllo il genere salvato, poi faccio un fallback sul nome se il campo non e' stato ancora impostato.
 const getWelcomePrefix = (user) => {
   if (user?.profile?.gender === "male") {
     return "Benvenuto nel workspace,";
@@ -104,7 +102,6 @@ const getWelcomePrefix = (user) => {
 };
 
 // mi serve per validare il task prima di inviarlo al backend.
-// lo uso per evitare submit vuoti e dare feedback immediato gia' dal frontend.
 const validateTaskDraft = (taskDraft) => {
   const nextErrors = {};
 
@@ -116,15 +113,13 @@ const validateTaskDraft = (taskDraft) => {
 };
 
 // mi serve per raggruppare i task nelle tre colonne della board.
-// questo mi permette di rendere la dashboard in modo pulito senza rifare filtri dentro il jsx.
 const groupTasksByStatus = (tasks) =>
   boardColumns.reduce((groupedTasks, column) => {
     groupedTasks[column.key] = tasks.filter((task) => task.status === column.key);
     return groupedTasks;
   }, {});
 
-// mi serve per comporre la dashboard vera dopo il login.
-// qui tengo sincronizzazione board, form nuovo task e azioni rapide sulle card.
+// mi serve per comporre la dashboard dopo il login.
 function TaskBoardPanel({
   user,
   session,
@@ -149,7 +144,6 @@ function TaskBoardPanel({
   const shouldShowBoardFeedback = isLoadingBoard || feedback.tone === "warning";
 
   // mi serve per centralizzare la gestione degli errori delle api task.
-  // se il token non vale piu', riporto subito il frontend allo stato guest invece di lasciare la board rotta.
   const handleTaskError = (error, fallbackMessage) => {
     if (error?.statusCode === 401) {
       onSessionExpired(error.message);
@@ -167,7 +161,6 @@ function TaskBoardPanel({
   };
 
   // mi serve per ricaricare task e riepilogo dal backend.
-  // lo uso sia all'apertura della dashboard sia dopo ogni create, update o delete.
   const refreshTaskBoard = async ({ showLoader = false, successMessage = "" } = {}) => {
     if (showLoader) {
       setIsLoadingBoard(true);
@@ -218,7 +211,6 @@ function TaskBoardPanel({
   };
 
   // mi serve per aggiornare il form del nuovo task campo per campo.
-  // lo uso anche per pulire l'errore di quel campo appena riprendo a scrivere.
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
 
@@ -239,7 +231,6 @@ function TaskBoardPanel({
   };
 
   // mi serve per eseguire tutte le mutazioni task con lo stesso schema.
-  // questo tiene insieme loading, feedback finale e refresh della board senza duplicare blocchi try/catch.
   const runTaskMutation = async ({
     taskId = "",
     loadingMessage,
@@ -277,7 +268,6 @@ function TaskBoardPanel({
   };
 
   // mi serve per creare un task nuovo dalla dashboard.
-  // quando il backend conferma il salvataggio, pulisco il form e risincronizzo subito le colonne.
   const handleCreateTask = async (event) => {
     event.preventDefault();
 
@@ -310,7 +300,6 @@ function TaskBoardPanel({
   };
 
   // mi serve per spostare rapidamente un task allo stato successivo.
-  // lo uso per avere una micro board interattiva senza aprire modali o editor extra.
   const handleAdvanceStatus = async (task) => {
     await runTaskMutation({
       taskId: task.id,
@@ -324,7 +313,6 @@ function TaskBoardPanel({
   };
 
   // mi serve per cambiare rapidamente la priorita' di una card.
-  // questo mi da' una forma semplice di update reale gia' utile da mostrare nel progetto finale.
   const handleCyclePriority = async (task) => {
     await runTaskMutation({
       taskId: task.id,
@@ -337,8 +325,7 @@ function TaskBoardPanel({
     });
   };
 
-  // mi serve per eliminare una card dalla board.
-  // lo uso per completare il flusso CRUD direttamente dall'interfaccia senza passaggi manuali.
+  // lo uso per completare il flusso CRUD direttamente dall'interfaccia
   const handleDeleteTask = async (task) => {
     await runTaskMutation({
       taskId: task.id,
@@ -349,7 +336,6 @@ function TaskBoardPanel({
   };
 
   // mi serve per ricaricare manualmente la board quando voglio un sync esplicito.
-  // questo e' utile sia in demo sia in fase di test, perche' posso forzare una nuova lettura dal backend con un click.
   const handleManualRefresh = async () => {
     setIsRefreshingBoard(true);
     await refreshTaskBoard({

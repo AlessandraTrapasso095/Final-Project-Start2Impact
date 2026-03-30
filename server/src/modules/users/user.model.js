@@ -1,16 +1,13 @@
 // questo file mi serve per definire la forma dei dati utente.
-// lo uso per creare record coerenti e per nascondere i campi sensibili quando serve restituire un utente al client.
 
 import { createRecordMeta, getUpdatedTimestamp } from "../../utils/create-record-meta.js";
 
 const defaultRole = "member";
 
 // mi serve per uniformare sempre l'email prima di salvarla o confrontarla.
-// questo evita problemi banali tipo maiuscole, spazi o doppioni scritti in modo diverso.
 export const normalizeEmail = (email = "") => String(email).trim().toLowerCase();
 
 // mi serve per creare il record utente completo che salveremo nel file dati.
-// lo uso gia' adesso come modello base, poi nello step auth gli passeremo la password hashata vera.
 export const createUserRecord = ({ name, email, passwordHash, role = defaultRole }) => ({
   ...createRecordMeta(),
   name: String(name).trim(),
@@ -26,7 +23,6 @@ export const createUserRecord = ({ name, email, passwordHash, role = defaultRole
 });
 
 // mi serve per aggiornare nome e campi profilo mantenendo intatto tutto il resto.
-// questo mi torna utile quando l'utente modifica solo una parte delle informazioni personali.
 export const updateUserProfileRecord = (user, profileUpdates = {}) => ({
   ...user,
   name:
@@ -50,6 +46,5 @@ export const updateUserProfileRecord = (user, profileUpdates = {}) => ({
   },
 });
 
-// mi serve per togliere la password hashata dai dati che escono verso il client.
 // lo uso per non rischiare di mostrare un campo sensibile per sbaglio.
 export const toPublicUser = ({ passwordHash, ...user }) => user;

@@ -1,4 +1,3 @@
-// questo file mi serve per raccogliere la logica del profilo utente.
 // lo uso per leggere e aggiornare le informazioni personali senza spargere controlli in controller e router.
 
 import { createHttpError } from "../../utils/create-http-error.js";
@@ -26,7 +25,6 @@ const sanitizeProfileInput = (payload = {}) => ({
 });
 
 // mi serve per evitare update vuoti o dati poco sensati.
-// cosi' il backend riceve solo valori che il frontend puo' davvero mostrare bene in dashboard.
 const validateProfileInput = (profileInput) => {
   const validationErrors = [];
   const hasKnownField =
@@ -93,7 +91,6 @@ const validateProfileInput = (profileInput) => {
 };
 
 // mi serve per leggere il profilo dell'utente autenticato in forma sicura.
-// lo uso quando la dashboard si apre e deve mostrare dati personali gia' pronti.
 export const getProfileForUser = async (userId) => {
   const user = await findUserById(userId);
 
@@ -112,7 +109,6 @@ export const getProfileForUser = async (userId) => {
 };
 
 // mi serve per aggiornare nome, genere, ruolo, bio e avatar dell'utente corrente.
-// dopo il salvataggio genero anche una notifica, cosi' il sistema notifiche mostra subito l'azione avvenuta.
 export const updateProfileForUser = async (userId, payload) => {
   const sanitizedProfileInput = sanitizeProfileInput(payload);
 

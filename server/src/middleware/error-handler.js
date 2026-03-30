@@ -1,10 +1,8 @@
-// questo file mi serve per gestire gli errori in un solo punto.
-// lo uso per non ripetere la stessa risposta di errore in ogni controller e per restare ordinato.
+// questo file mi serve per gestire gli errori 
 
 import { createErrorResponse } from "../utils/create-api-response.js";
 
-// mi serve come rete di sicurezza finale.
-// questo intercetta errori inattesi, decide lo status code e restituisce una risposta json coerente.
+// questo intercetta errori inattesi, decide lo status code e restituisce una risposta json 
 export const errorHandler = (error, request, response, next) => {
   const isEntityTooLargeError = error.type === "entity.too.large" || error.status === 413;
   const statusCode = isEntityTooLargeError ? 413 : error.statusCode || 500;

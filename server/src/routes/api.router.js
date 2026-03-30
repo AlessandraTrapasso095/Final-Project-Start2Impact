@@ -1,5 +1,4 @@
 // questo file mi serve per raccogliere in un solo punto tutti i moduli api.
-// lo uso per montare system, auth e piu' avanti anche task e profile senza sporcare app.js.
 
 import { Router } from "express";
 import authRouter from "../modules/auth/auth.routes.js";

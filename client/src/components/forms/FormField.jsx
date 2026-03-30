@@ -1,8 +1,6 @@
 // questo file mi serve per avere un campo form riusabile con label, hint ed errore.
-// lo uso per non duplicare markup e classi in ogni schermata di login e registrazione.
 
-// mi serve per rendere tutti i campi coerenti tra loro.
-// questo prende le informazioni base del campo e decide da solo come mostrare messaggi di aiuto o di errore.
+// prende le informazioni base del campo e decide da solo come mostrare messaggi di aiuto o di errore.
 function FormField({
   label,
   name,

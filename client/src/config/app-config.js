@@ -1,5 +1,4 @@
-// questo file mi serve per tenere insieme le costanti principali del frontend.
-// lo uso per evitare di ripetere nome progetto, url backend e informazioni di contesto in componenti diversi.
+// questo file mi serve per tenere insieme le costanti del frontend
 
 export const appConfig = Object.freeze({
   appName: "PixelForge Studio Workspace",

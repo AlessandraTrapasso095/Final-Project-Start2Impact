@@ -1,5 +1,4 @@
-// questo file mi serve per avere un bottone riusabile in tutta l'app.
-// lo uso per cambiare variante e dimensione senza riscrivere ogni volta classi e struttura.
+// lo uso per cambiare variante e dimensione 
 
 const variantClassMap = {
   primary: "button button--primary",
@@ -14,7 +13,6 @@ const sizeClassMap = {
 };
 
 // mi serve per centralizzare la resa dei pulsanti principali del progetto.
-// questo prende testo, variante e dimensione e restituisce sempre un bottone coerente con il design system.
 function Button({
   children,
   type = "button",

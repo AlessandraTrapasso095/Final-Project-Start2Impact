@@ -1,5 +1,4 @@
-// questo file mi serve per montare le rotte del sistema notifiche.
-// lo uso per tenere insieme protezione auth, elenco e azioni di lettura in un modulo dedicato.
+// lo uso per tenere insieme protezione auth, elenco e azioni di lettura 
 
 import { Router } from "express";
 import { requireAuth } from "../../middleware/require-auth.js";

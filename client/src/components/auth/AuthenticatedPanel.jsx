@@ -1,5 +1,4 @@
-// questo file mi serve per mostrare il riepilogo utente dentro la dashboard loggata.
-// lo uso per raccogliere dati account e sessione in un pannello ordinato senza mescolare tutto nella board.
+// questo file mi serve per mostrare il riepilogo utente dentro la dashboard loggata
 
 import SurfaceCard from "../ui/SurfaceCard.jsx";
 
@@ -18,8 +17,7 @@ const formatSessionDate = (value) => {
   }).format(new Date(value));
 };
 
-// mi serve per mostrare un riepilogo chiaro dell'utente autenticato.
-// questo pannello resta focalizzato su credenziali e tempi di sessione, mentre board e azioni stanno in altri blocchi.
+// mi serve per mostrare un riepilogo chiaro dell'utente autenticato
 function AuthenticatedPanel({ user, session }) {
   const roleLabel = roleLabelMap[user.role] || user.role;
 

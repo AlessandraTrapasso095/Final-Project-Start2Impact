@@ -1,4 +1,3 @@
-// questo file mi serve per permettere al frontend locale di parlare con le api durante lo sviluppo.
 // lo uso per gestire gli header CORS in un punto solo e non dover rincorrere errori del browser piu' avanti.
 
 const allowedOrigins = new Set([
@@ -11,8 +10,7 @@ const allowedOrigins = new Set([
 const allowedHeaders = "Content-Type, Authorization, X-Session-Token";
 const allowedMethods = "GET, POST, PATCH, DELETE, OPTIONS";
 
-// mi serve per rispondere bene alle richieste del browser quando il frontend chiama il backend.
-// questo aggiunge gli header utili solo alle origini che conosciamo e chiude subito le preflight OPTIONS.
+// mi serve per rispondere alle richieste del browser quando il frontend chiama il backend.
 export const corsHandler = (request, response, next) => {
   const requestOrigin = request.headers.origin;
 

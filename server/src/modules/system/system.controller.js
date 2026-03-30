@@ -1,5 +1,4 @@
-// questo file mi serve per gestire le risposte del modulo system.
-// lo uso per controllare velocemente se l'api e' viva e per mostrare una panoramica delle rotte disponibili.
+// questo file mi serve per gestire le risposte del modulo system
 
 import { env } from "../../config/env.js";
 import { createSuccessResponse } from "../../utils/create-api-response.js";
@@ -63,7 +62,6 @@ const availableRoutes = [
 ];
 
 // mi serve per avere una home delle api leggibile anche dal browser.
-// questo mi torna utile adesso per verificare che il router centrale stia funzionando.
 export const getApiOverview = (request, response) => {
   response.status(200).json(
     createSuccessResponse("API pronta. Struttura backend impostata correttamente.", {
@@ -75,7 +73,6 @@ export const getApiOverview = (request, response) => {
 };
 
 // mi serve per un check semplice e veloce.
-// lo uso quando voglio capire se il server e' acceso senza coinvolgere logiche piu' complesse.
 export const getHealthStatus = (request, response) => {
   response.status(200).json(
     createSuccessResponse("Server attivo.", {

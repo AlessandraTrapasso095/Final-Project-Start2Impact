@@ -1,4 +1,3 @@
-// questo file mi serve per costruire il pannello laterale con status e preview della UI.
 // lo uso per mostrare subito loading, stato del sistema e checklist visiva del design system.
 
 import LoadingRing from "../components/ui/LoadingRing.jsx";
@@ -7,8 +6,7 @@ import SurfaceCard from "../components/ui/SurfaceCard.jsx";
 import { appConfig } from "../config/app-config.js";
 import { previewChecklist, statusHighlights } from "../data/dashboard-highlights.js";
 
-// mi serve per avere un pannello di controllo sintetico ma ricco.
-// questo mostra informazioni utili al progetto e mi prepara gia' lo spazio dove metteremo l'auth vera nello step dopo.
+// mi serve per avere un pannello di controllo
 function SystemPreview() {
   return (
     <div className="system-preview">

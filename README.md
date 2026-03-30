@@ -52,8 +52,6 @@ Il progetto nasce per:
 Final Project Start2Impact/
 ├── client/                  # frontend React + Vite
 ├── server/                  # backend Node.js + Express
-├── docs/
-│   └── project-plan.md      # brief iniziale e roadmap
 ├── README.md
 └── package.json             # workspace root
 ```

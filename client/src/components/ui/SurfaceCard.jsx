@@ -1,8 +1,6 @@
-// questo file mi serve per creare card riutilizzabili con la stessa base visiva.
-// lo uso per contenitori di contenuti, pannelli e blocchi informativi senza ripetere sempre lo stesso wrapper.
+// lo uso per contenitori di contenuti, pannelli e blocchi informativi 
 
 // mi serve per avere una superficie coerente in tutto il progetto.
-// questo componente accetta un titolo opzionale e mi lascia dentro qualsiasi contenuto mi serva.
 function SurfaceCard({ eyebrow, title, description, children, className = "" }) {
   const cardClassName = `surface-card ${className}`.trim();
 

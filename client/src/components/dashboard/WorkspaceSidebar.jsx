@@ -1,5 +1,4 @@
-// questo file mi serve per costruire la navigazione laterale dell'area riservata.
-// lo uso per dare alla dashboard una struttura chiara con collegamenti rapidi alle sezioni principali.
+// questo file mi serve per costruire la navigazione laterale dell'area riservata
 
 import { useEffect, useState } from "react";
 
@@ -17,8 +16,7 @@ const getActiveNavItemId = (hashValue = "") => {
   return navItems.some((item) => item.id === normalizedHash) ? normalizedHash : "dashboard";
 };
 
-// mi serve per tenere la sidebar leggibile e coerente col layout editoriale che sto seguendo.
-// qui porto rapidamente l'utente nelle parti importanti della dashboard senza appesantire l'header centrale.
+// mi serve per tenere la sidebar leggibile.
 function WorkspaceSidebar() {
   const [activeItemId, setActiveItemId] = useState(() =>
     typeof window === "undefined" ? "dashboard" : getActiveNavItemId(window.location.hash),

@@ -1,7 +1,5 @@
 // questo file mi serve per mostrare la testata principale della landing.
-// lo uso per dare subito struttura al template con brand, navigazione e accesso all'area riservata.
 
-// mi serve per avere un header pulito e coerente con la landing che sto costruendo.
 // questo tiene insieme logo testuale, link di sezione e bottone che porta alla box di accesso.
 function LandingHeader() {
   return (

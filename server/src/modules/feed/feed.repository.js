@@ -1,11 +1,9 @@
 // questo file mi serve per gestire la persistenza della bacheca post e commenti.
-// lo uso per tenere la logica di file system fuori dal service della feed area.
 
 import { readDatabase, updateDatabase } from "../../services/file-database.service.js";
 import { addCommentToPostRecord, createPostRecord } from "./feed.model.js";
 
 // mi serve per leggere tutti i post della bacheca.
-// lo uso come base sia per la lista sia per i commenti.
 export const getPosts = async () => {
   const database = await readDatabase();
 
@@ -13,7 +11,6 @@ export const getPosts = async () => {
 };
 
 // mi serve per trovare un post dal suo id.
-// torna utile quando commento oppure controllo se il contenuto esiste davvero.
 export const findPostById = async (postId) => {
   const posts = await getPosts();
 
@@ -21,7 +18,6 @@ export const findPostById = async (postId) => {
 };
 
 // mi serve per creare un post nuovo.
-// il record viene costruito dal model e poi salvato nella collezione posts.
 export const createPost = async (postData) => {
   const nextPost = createPostRecord(postData);
 
@@ -34,7 +30,6 @@ export const createPost = async (postData) => {
 };
 
 // mi serve per aggiungere un commento a un post esistente.
-// restituisco il post aggiornato cosi' il service lo puo' usare subito nel payload finale.
 export const addCommentToPost = async (postId, commentData) => {
   let updatedPost = null;
 

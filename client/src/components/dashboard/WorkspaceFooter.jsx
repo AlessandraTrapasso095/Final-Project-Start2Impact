@@ -1,6 +1,4 @@
-// questo file mi serve per chiudere l'area riservata con un footer coerente.
-// lo uso per dare una base ordinata alla dashboard interna senza riusare il footer della landing.
-
+// questo file mi serve per chiudere l'area riservata con un footer
 const footerLinks = [
   { id: "dashboard", label: "Panoramica" },
   { id: "task-board", label: "Attivita'" },
@@ -8,8 +6,7 @@ const footerLinks = [
   { id: "profilo", label: "Profilo" },
 ];
 
-// mi serve per chiudere la dashboard con riferimenti utili e interni all'app.
-// questo tiene insieme brand e scorciatoie senza creare un blocco pesante in fondo alla pagina.
+// mi serve per chiudere la dashboard con riferimenti interni all'app
 function WorkspaceFooter() {
   return (
     <footer className="workspace-footer" id="workspace-footer">

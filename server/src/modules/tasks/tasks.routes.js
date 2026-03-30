@@ -1,5 +1,4 @@
 // questo file mi serve per definire le rotte del modulo task board.
-// lo uso per tenere insieme CRUD dei task e middleware auth senza sporcare il router centrale.
 
 import { Router } from "express";
 import { requireAuth } from "../../middleware/require-auth.js";

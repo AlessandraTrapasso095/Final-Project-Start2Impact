@@ -1,5 +1,4 @@
 // questo file mi serve per raccogliere tutte le sezioni che stanno sotto la hero.
-// lo uso per tenere workflow, benefici e struttura della landing a tutta larghezza come nel layout di riferimento.
 
 import { footerDialogItems } from "../data/footer-dialog-items.js";
 
@@ -49,7 +48,6 @@ const showcaseImageUrl =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuARQino_OUaOqoIxxmweMpIGvFdnCR62S2f5IkPwvdz0_c9v6dgTnhi-3yNWZWfwkTD3GMzsOYzk2x0JYFUNIKrHFWjpXNisM9AiTD4frm_ZzMGw66U5oTF2is7Mkc3CcBW0Grg-erl_iB9mJaC_Kz9y7cPYr0l-5e6y8_CUbHSIMg_6yidLINwA8nWeDXhAusXM9FKypFxX9bDIX5HIZxb_DOFvzT1NAI6CUawCzI9UCrHZakhFd2JEXBQCk4yh6TzYZoQbRe0W10";
 
 // mi serve per costruire il resto della landing sotto la hero.
-// questo blocco adatta workflow e sezione benefici al progetto PixelForge senza copiare il testo della reference.
 function LandingSections() {
   return (
     <div className="landing-sections">

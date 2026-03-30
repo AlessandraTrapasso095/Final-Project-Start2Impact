@@ -1,5 +1,4 @@
 // questo file mi serve per montare le rotte del profilo utente.
-// lo uso per tenere insieme lettura e update del profilo sotto la stessa protezione auth.
 
 import { Router } from "express";
 import { requireAuth } from "../../middleware/require-auth.js";

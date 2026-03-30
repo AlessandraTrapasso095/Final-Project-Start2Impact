@@ -1,5 +1,5 @@
 // questo file mi serve per cambiare velocemente tra login e registrazione.
-// lo uso per tenere separata la logica di switch dal resto del form e non ripetere gli stessi bottoni in giro.
+// lo uso per tenere separata la logica di switch dal resto del form 
 
 const authModes = [
   { id: "register", label: "Crea account" },

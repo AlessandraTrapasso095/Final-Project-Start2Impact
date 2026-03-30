@@ -1,5 +1,4 @@
-// questo file mi serve per avviare davvero il server Node.
-// lo uso per tenere qui l'ascolto della porta e lasciare app.js pulito e riutilizzabile.
+// questo file mi serve per avviare il server Node.
 
 import app from "./app.js";
 import { env } from "./config/env.js";
@@ -10,7 +9,6 @@ const server = app.listen(env.port, () => {
 });
 
 // mi serve per chiudere il server in modo ordinato quando fermo il processo.
-// questo evita di lasciare il backend in uno stato sporco durante i test manuali.
 const shutdownServer = (signal) => {
   console.log(`[server] ricevuto ${signal}, chiusura in corso...`);
 

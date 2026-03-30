@@ -1,10 +1,8 @@
-// questo file mi serve per leggere il token di sessione dalle richieste in un punto solo.
-// lo uso per restare DRY e non riscrivere la stessa lettura di header e body in controller diversi.
+// questo file mi serve per leggere il token di sessione dalle richieste 
 
 const bearerPrefix = "Bearer ";
 
 // mi serve per supportare sia authorization header sia x-session-token.
-// questo torna utile sia nei test manuali sia piu' avanti quando collegheremo il frontend.
 export const getAuthToken = (request) => {
   const authorizationHeader = request.headers?.authorization;
   const customSessionHeader = request.headers?.["x-session-token"];

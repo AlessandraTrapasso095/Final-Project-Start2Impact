@@ -1,5 +1,5 @@
 // questo file mi serve per costruire l'area loggata vera dell'app.
-// lo uso per sostituire completamente la landing dopo il login e distribuire task, bacheca, profilo e notifiche in modo chiaro.
+// lo uso per sostituire completamente la landing dopo il login e distribuire task, bacheca, profilo e notifiche.
 
 import { useState } from "react";
 import FeedPanel from "./FeedPanel.jsx";
@@ -11,7 +11,6 @@ import TaskBoardPanel from "../tasks/TaskBoardPanel.jsx";
 import Button from "../ui/Button.jsx";
 
 // mi serve per tenere allineato il pannello notifiche quando succede qualcosa in dashboard.
-// ogni volta che task, profilo o bacheca completano un'azione, incremento questo contatore e forzo un refresh pulito.
 function WorkspaceDashboard({
   user,
   session,

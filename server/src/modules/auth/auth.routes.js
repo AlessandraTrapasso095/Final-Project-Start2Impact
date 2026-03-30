@@ -1,5 +1,4 @@
-// questo file mi serve per definire le rotte del modulo auth in un posto dedicato.
-// lo uso per mantenere la struttura a moduli pulita fin da subito.
+// questo file mi serve per definire le rotte del modulo auth
 
 import { Router } from "express";
 import {

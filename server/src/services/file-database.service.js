@@ -1,5 +1,4 @@
 // questo file mi serve per leggere e scrivere il file dati locale in modo centralizzato.
-// lo uso per restare DRY e non spargere logica di file system dentro i moduli users e tasks.
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { storageDirectoryPath, storageFilePath } from "../config/data-paths.js";
@@ -10,7 +9,6 @@ const storageFileHeader = [
 ].join("\n");
 
 // mi serve per creare sempre una struttura iniziale coerente se il file e' vuoto o manca.
-// questo ci da' subito le tre collezioni principali che useremo nei prossimi step.
 export const createEmptyDatabase = () => ({
   meta: {
     version: 1,
@@ -34,8 +32,7 @@ const removeJsoncComments = (fileContent) =>
 const serializeDatabase = (database) =>
   `${storageFileHeader}\n${JSON.stringify(database, null, 2)}\n`;
 
-// mi serve per essere sicuro che la cartella e il file dati esistano sempre.
-// lo uso come primo passaggio di sicurezza prima di qualsiasi lettura o scrittura.
+// mi serve per essere sicura che la cartella e il file dati esistano sempre.
 export const ensureDatabaseFile = async () => {
   await mkdir(storageDirectoryPath, { recursive: true });
 
@@ -50,8 +47,7 @@ export const ensureDatabaseFile = async () => {
   }
 };
 
-// mi serve per leggere i dati dal file e trasformarli in un oggetto JavaScript pronto da usare.
-// questo pulisce i commenti del file jsonc e si occupa anche di completare eventuali chiavi mancanti.
+// mi serve per leggere i dati dal file.
 export const readDatabase = async () => {
   await ensureDatabaseFile();
 
@@ -73,8 +69,7 @@ export const readDatabase = async () => {
   };
 };
 
-// mi serve per salvare tutto il database in un colpo solo.
-// lo uso quando ho gia' il nuovo stato completo e voglio scriverlo in modo pulito nel file.
+// mi serve per salvare tutto il database 
 export const writeDatabase = async (database) => {
   const nextDatabase = {
     ...database,
@@ -93,7 +88,6 @@ export const writeDatabase = async (database) => {
 };
 
 // mi serve per aggiornare il database partendo sempre dall'ultima versione salvata.
-// questo riceve una funzione updater cosi' i repository possono cambiare solo quello che serve.
 export const updateDatabase = async (updater) => {
   const currentDatabase = await readDatabase();
   const nextDatabase = await updater(structuredClone(currentDatabase));
@@ -102,7 +96,6 @@ export const updateDatabase = async (updater) => {
 };
 
 // mi serve per avere un riepilogo veloce dello storage durante i test manuali.
-// lo uso per controllare numero di utenti, task e sessioni senza aprire il file a mano ogni volta.
 export const getDatabaseSummary = async () => {
   const database = await readDatabase();
 

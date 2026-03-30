@@ -1,8 +1,6 @@
-// questo file mi serve per costruire solo la hero della landing.
-// lo uso per rispettare il layout del riferimento: testo a sinistra e box account separato sulla destra.
+// questo file mi serve per costruire solo la hero della landing
 
 // mi serve per dare alla hero un tono piu' pulito e piu' vicino alla reference.
-// questo blocco racconta subito il prodotto senza trascinarsi dietro le altre sezioni della landing.
 function AuthExperience() {
   return (
     <div className="landing-hero">

@@ -1,5 +1,4 @@
-// questo file mi serve per tenere i contenuti statici della dashboard iniziale in un posto solo.
-// lo uso per restare DRY e costruire card e pillole senza scrivere dati hardcoded dentro i componenti.
+// lo uso per costruire card e pillole senza scrivere dati hardcoded dentro i componenti.
 
 export const workflowHighlights = [
   {

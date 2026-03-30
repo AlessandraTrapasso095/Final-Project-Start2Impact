@@ -1,5 +1,4 @@
 // questo file mi serve per gestire la vera UI di login e registrazione collegata alle API.
-// lo uso per tenere insieme form, validazione locale, stato sessione, token salvato e logout senza sporcare il resto dell'app.
 
 import { startTransition, useEffect, useState } from "react";
 import AuthModeSwitch from "../components/auth/AuthModeSwitch.jsx";
@@ -125,7 +124,6 @@ const validateAuthForm = (mode, formValues) => {
   const nextErrors = {};
 
   // mi serve per controllare solo i campi rilevanti della modalita' attuale.
-  // cosi' evito validazioni inutili e tengo la logica del form piu' leggibile.
   if (mode === "register" && formValues.name.trim().length < 2) {
     nextErrors.name = "Scrivo almeno 2 caratteri per il nome.";
   }
@@ -156,7 +154,6 @@ const buildRequestPayload = (mode, formValues) => {
   };
 };
 
-// mi serve per comporre e gestire il pannello auth vero e proprio.
 // qui tengo tutto quello che riguarda il comportamento reale del form e della sessione, cosi' il resto dell'app resta piu' pulito.
 function AuthWorkspace() {
   const [mode, setMode] = useState("register");
@@ -319,7 +316,6 @@ function AuthWorkspace() {
     };
   }, []);
 
-  // mi serve per cambiare modalita' senza lasciare errori vecchi in giro.
   // quando passo da login a registrazione, ripulisco feedback ed errori per non confondere la UI.
   const handleModeChange = (nextMode) => {
     setMode(nextMode);
@@ -328,7 +324,6 @@ function AuthWorkspace() {
   };
 
   // mi serve per aggiornare un campo alla volta in modo riusabile.
-  // lo uso anche per togliere l'errore di quel campo appena l'utente ricomincia a scrivere.
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
 
@@ -349,7 +344,6 @@ function AuthWorkspace() {
   };
 
   // mi serve per inviare il form giusto al backend e salvare la sessione se tutto va bene.
-  // questo aggiorna frontend e browser storage nello stesso flusso, cosi' la sessione resta coerente dopo il refresh.
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -408,7 +402,6 @@ function AuthWorkspace() {
   };
 
   // mi serve per chiudere davvero la sessione attiva sia nel backend sia nel browser.
-  // questo cancella il token salvato e riporta la UI allo stato guest in modo pulito.
   const handleLogout = async () => {
     if (!sessionState.session?.token) {
       return;
@@ -442,7 +435,6 @@ function AuthWorkspace() {
   };
 
   // mi serve per riportare il frontend allo stato guest se la sessione non vale piu'.
-  // questo mi aiuta soprattutto quando una rotta task risponde 401 e voglio far ripartire il flusso in modo pulito.
   const handleSessionExpired = (message) => {
     clearStoredSessionToken();
 

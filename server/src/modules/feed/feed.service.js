@@ -1,4 +1,3 @@
-// questo file mi serve per concentrare la logica della bacheca post e commenti.
 // lo uso per validare i contenuti, ordinare la feed e generare notifiche quando succede qualcosa.
 
 import { createHttpError } from "../../utils/create-http-error.js";
@@ -27,7 +26,6 @@ const sanitizeCommentInput = (payload = {}) => ({
 });
 
 // mi serve per bloccare post troppo vuoti o poco utili da leggere in bacheca.
-// cosi' mantengo la sezione contenuti ordinata e con messaggi abbastanza chiari.
 const validatePostInput = (postInput) => {
   const validationErrors = [];
 
@@ -54,7 +52,6 @@ const validatePostInput = (postInput) => {
 };
 
 // mi serve per validare i commenti della bacheca.
-// qui tengo una soglia minima cosi' evito messaggi vuoti o rumorosi.
 const validateCommentInput = (commentInput) => {
   if (commentInput.message.length < minimumCommentLength) {
     throw createHttpError(
@@ -67,7 +64,6 @@ const validateCommentInput = (commentInput) => {
 };
 
 // mi serve per restituire la bacheca ordinata per attivita' recente.
-// il frontend riceve anche un riepilogo con numero di post e commenti gia' pronto da mostrare.
 export const listFeedPosts = async () => {
   const posts = await getPosts();
   const sortedPosts = sortPostsByRecentActivity(posts);
@@ -78,7 +74,6 @@ export const listFeedPosts = async () => {
   };
 };
 
-// mi serve per pubblicare un nuovo post in bacheca.
 // dopo il salvataggio creo una notifica personale cosi' il pannello notifiche si aggiorna da solo.
 export const createFeedPostForUser = async (user, payload) => {
   const sanitizedPostInput = sanitizePostInput(payload);
@@ -105,7 +100,6 @@ export const createFeedPostForUser = async (user, payload) => {
 };
 
 // mi serve per aggiungere un commento a un post esistente.
-// se il post appartiene a un'altra persona, mando una notifica anche al proprietario.
 export const addCommentToFeedPostForUser = async (postId, user, payload) => {
   const existingPost = await findPostById(postId);
 

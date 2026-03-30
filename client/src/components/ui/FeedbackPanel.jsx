@@ -1,10 +1,8 @@
-// questo file mi serve per mostrare feedback coerenti in tutta l'app.
-// lo uso per restare DRY tra auth e task board, con messaggi, dettagli errore e loading nello stesso componente.
+// questo file mi serve per mostrare feedback in tutta l'app
 
 import LoadingRing from "./LoadingRing.jsx";
 
 // mi serve per visualizzare messaggi di stato sempre con la stessa struttura.
-// questo componente gestisce sia il semplice testo sia un piccolo elenco di dettagli utili quando qualcosa non va.
 function FeedbackPanel({
   tone = "neutral",
   message,

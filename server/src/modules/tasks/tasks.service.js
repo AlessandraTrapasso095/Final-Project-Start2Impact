@@ -1,4 +1,3 @@
-// questo file mi serve per concentrare la logica di business della task board.
 // lo uso per validare input, filtrare i task per utente e tenere i controller leggeri e facili da leggere.
 
 import { createHttpError } from "../../utils/create-http-error.js";
@@ -57,7 +56,6 @@ const validateCreateTaskInput = (taskInput) => {
   const validationErrors = [];
 
   // mi serve per non creare task vuoti o con valori non previsti.
-  // questo blocca input sporchi prima che finiscano nel file dati.
   if (taskInput.title.length < minimumTitleLength) {
     validationErrors.push(
       `Il titolo del task deve contenere almeno ${minimumTitleLength} caratteri.`,
@@ -91,7 +89,6 @@ const validateUpdateTaskInput = (taskInput) => {
     typeof taskInput.priority !== "undefined";
 
   // mi serve per evitare patch vuote o incoerenti.
-  // cosi' aggiorno solo task con almeno un campo sensato e con valori che il frontend puo' gestire.
   if (!hasKnownField) {
     validationErrors.push("Mi serve almeno un campo da aggiornare.");
   }
@@ -136,7 +133,6 @@ const getOwnedTaskOrThrow = async (taskId, ownerId) => {
 };
 
 // mi serve per elencare i task dell'utente autenticato in ordine utile per la dashboard.
-// lo uso per restituire insieme lista e riepilogo, cosi' il frontend ha gia' i dati pronti.
 export const listTasksForUser = async (ownerId) => {
   const ownedTasks = await getTasksByOwnerId(ownerId);
   const sortedTasks = sortTasksByMostRecentUpdate(ownedTasks);
@@ -148,7 +144,6 @@ export const listTasksForUser = async (ownerId) => {
 };
 
 // mi serve per creare un task nuovo collegandolo subito all'utente loggato.
-// questo tiene ownerId e validazione dentro il backend invece di fidarsi del frontend.
 export const createTaskForUser = async (ownerId, payload) => {
   const sanitizedTaskInput = sanitizeTaskInput(payload);
 
@@ -170,11 +165,9 @@ export const createTaskForUser = async (ownerId, payload) => {
 };
 
 // mi serve per recuperare il dettaglio di un task singolo del proprietario corrente.
-// lo uso per evitare che un utente legga task di altri utenti cambiando solo l'id.
 export const getTaskForUser = async (taskId, ownerId) => getOwnedTaskOrThrow(taskId, ownerId);
 
 // mi serve per aggiornare un task esistente dopo aver verificato proprieta' e dati.
-// questo centralizza in un solo posto sia i controlli di sicurezza sia il merge dell'aggiornamento.
 export const updateTaskForUser = async (taskId, ownerId, payload) => {
   const existingTask = await getOwnedTaskOrThrow(taskId, ownerId);
 
@@ -194,7 +187,6 @@ export const updateTaskForUser = async (taskId, ownerId, payload) => {
 };
 
 // mi serve per eliminare un task dell'utente corrente in modo sicuro.
-// lo uso quando dal frontend chiudo una card e voglio la conferma che il backend l'ha davvero rimossa.
 export const deleteTaskForUser = async (taskId, ownerId) => {
   const existingTask = await getOwnedTaskOrThrow(taskId, ownerId);
   const deletedTask = await deleteTask(taskId);

@@ -1,5 +1,4 @@
-// questo file mi serve per raccogliere in un solo posto i contenuti del footer.
-// lo uso per restare DRY tra sezione informativa della landing e popup aperti dai link finali.
+// questo file mi serve per raccogliere in un solo posto i contenuti del footer
 
 export const footerDialogItems = [
   {

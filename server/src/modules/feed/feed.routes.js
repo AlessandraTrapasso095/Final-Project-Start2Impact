@@ -1,4 +1,3 @@
-// questo file mi serve per montare le rotte della bacheca post e commenti.
 // lo uso per tenere insieme feed, pubblicazione e commenti sotto la stessa protezione auth.
 
 import { Router } from "express";
