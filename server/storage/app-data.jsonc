@@ -1,8 +1,10 @@
+// questo file mi serve per salvare i dati locali del progetto senza usare ancora un database esterno.
+// lo uso per tenere utenti, task, sessioni, post e notifiche in un solo posto semplice da leggere mentre costruiamo l'app.
 {
   "meta": {
     "version": 1,
     "createdAt": "2026-03-26T00:00:00.000Z",
-    "updatedAt": "2026-03-30T14:01:28.766Z"
+    "updatedAt": "2026-03-30T14:59:59.019Z"
   },
   "users": [
     {
@@ -32,16 +34,7 @@
       "priority": "high"
     }
   ],
-  "sessions": [
-    {
-      "id": "39ce2bbb-974e-4a10-853f-2392db7748d4",
-      "createdAt": "2026-03-30T10:20:11.503Z",
-      "updatedAt": "2026-03-30T14:01:28.766Z",
-      "userId": "77ebe041-d026-4f6d-866d-c9d0af8118b7",
-      "token": "3e4a882f098304fa8e6e45b05baa766a6060b8dab218841621cf03b8d1b7b3c3f92e6133f6aa0d561c46a52ba2612fc0",
-      "lastUsedAt": "2026-03-30T14:01:28.766Z"
-    }
-  ],
+  "sessions": [],
   "posts": [
     {
       "id": "0a7bd768-9635-4f7a-88e2-bfcd9c9b19ba",
